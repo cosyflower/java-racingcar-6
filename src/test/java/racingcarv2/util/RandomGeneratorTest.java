@@ -3,6 +3,7 @@ package racingcarv2.util;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mockito;
 
 public class RandomGeneratorTest {
 
