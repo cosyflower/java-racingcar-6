@@ -2,6 +2,7 @@ package refactor.racer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RacerTest {
@@ -19,5 +20,13 @@ public class RacerTest {
         Racer movedRacer = racer.move(() -> 4);
 
         assertThat(movedRacer.getRacerPositionValue()).isEqualTo(4);
+    }
+
+    @Test
+    void equalsIfSamePosition() {
+        Racer racer = Racer.of(RacerName.from("성훈"), RacerPosition.from(3));
+
+        boolean result = racer.hasSamePosition(Racer.of(RacerName.from("포비"), RacerPosition.from(5)));
+        assertThat(result).isEqualTo(false);
     }
 }

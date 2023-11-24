@@ -38,4 +38,8 @@ public class RacerPosition {
     public int getPositionValue() {
         return positionValue;
     }
+
+    public boolean hasSameValue(RacerPosition racerPosition) {
+        return this.equals(racerPosition);
+    }
 }

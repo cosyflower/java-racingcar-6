@@ -2,7 +2,7 @@ package refactor.racer;
 
 import java.util.function.Supplier;
 
-public class Racer {
+public class Racer implements Comparable<Racer> {
     private static final int GREEN_LIGHT_VALUE = 4;
     private final RacerName racerName;
     private final RacerPosition racerPosition;
@@ -22,6 +22,15 @@ public class Racer {
             return Racer.of(racerName, movedRacePosition);
         }
         return this;
+    }
+
+    public boolean hasSamePosition(Racer racerWithMaxPosition) {
+        return racerPosition.hasSameValue(racerWithMaxPosition.racerPosition);
+    }
+
+    @Override
+    public int compareTo(Racer otherRacer) {
+        return racerPosition.getPositionValue() - otherRacer.getRacerPositionValue();
     }
 
     public String getRacerNameValue() {
