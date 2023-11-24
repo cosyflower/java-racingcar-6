@@ -3,25 +3,32 @@ package refactor;
 import java.util.function.Supplier;
 
 public class Racer {
-    private final String name;
-    private int position;
+    private static final int GREEN_LIGHT_VALUE = 4;
+    private final RacerName racerName;
+    private final RacerPosition racerPosition;
 
-    public Racer(String name, int position) {
-        this.name = name;
-        this.position = position;
+    private Racer(RacerName name, RacerPosition position) {
+        this.racerName = name;
+        this.racerPosition = position;
     }
 
-    public void move(Supplier<Integer> randomSupplier) {
-        if (randomSupplier.get() >= 4) {
-            this.position += 1;
+    public static Racer of(RacerName racerName, RacerPosition racerPosition) {
+        return new Racer(racerName, racerPosition);
+    }
+
+    public Racer move(Supplier<Integer> randomSupplier) { // random으로 수를 받아야 한다 - pickNumberInRange() 로 작성한다
+        if (randomSupplier.get() >= GREEN_LIGHT_VALUE) {
+            RacerPosition movedRacePosition = this.racerPosition.moveForward();
+            return Racer.of(racerName, movedRacePosition);
         }
+        return this;
     }
 
-    public String getName() {
-        return name;
+    public String getRacerNameValue() {
+        return racerName.getRacerNameValue();
     }
 
-    public int getPosition() {
-        return position;
+    public int getRacerPositionValue() {
+        return racerPosition.getPositionValue();
     }
 }

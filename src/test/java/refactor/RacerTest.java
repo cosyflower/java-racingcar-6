@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 public class RacerTest {
     @Test
     void createRacer() {
-        Racer racer = new Racer("성훈", 3);
+        Racer racer = Racer.of(RacerName.from("성훈"), RacerPosition.from(3));
 
-        assertThat(racer.getName()).isEqualTo("성훈");
-        assertThat(racer.getPosition()).isEqualTo(3);
+        assertThat(racer.getRacerNameValue()).isEqualTo("성훈");
+        assertThat(racer.getRacerPositionValue()).isEqualTo(3);
     }
 
     @Test
     void moveWhenBiggerThanFour() {
-        Racer racer = new Racer("성훈", 3);
-        racer.move(() -> 4);
+        Racer racer = Racer.of(RacerName.from("성훈"), RacerPosition.from(3));
+        Racer movedRacer = racer.move(() -> 4);
 
-        assertThat(racer.getPosition()).isEqualTo(4);
+        assertThat(movedRacer.getRacerPositionValue()).isEqualTo(4);
     }
 }
