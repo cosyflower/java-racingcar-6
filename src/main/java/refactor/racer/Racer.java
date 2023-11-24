@@ -1,4 +1,4 @@
-package refactor;
+package refactor.racer;
 
 import java.util.function.Supplier;
 
