@@ -16,8 +16,11 @@ public class Racer implements Comparable<Racer> {
         return new Racer(racerName, racerPosition);
     }
 
+    // 이동하면 Racer 새로 반환한다
+    // 불변 객체로만 구성했기 때문이다
     public Racer move(Supplier<Integer> randomSupplier) { // random으로 수를 받아야 한다 - pickNumberInRange() 로 작성한다
         if (randomSupplier.get() >= GREEN_LIGHT_VALUE) {
+            // 불변 객체로 선언하였기에 이동한 이후에 새로운 객체를 반환하는 형태가 되겠다
             RacerPosition movedRacePosition = this.racerPosition.moveForward();
             return Racer.of(racerName, movedRacePosition);
         }
