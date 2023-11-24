@@ -3,8 +3,7 @@ package refactor.racer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import refactor.numberGenerator.NumberGenerator;
-import refactor.numberGenerator.RandomNumberGenerator;
+import java.util.function.Supplier;
 
 public class ParticipatedRacers {
     private final List<Racer> participatedRacers;
@@ -17,12 +16,11 @@ public class ParticipatedRacers {
         return new ParticipatedRacers(participatedRacers);
     }
 
-    // 라운드 진행하기 -> checkEachNap (각각 진행한다)
-    public void checkEachLap() {
-        NumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        participatedRacers.forEach(
-                racer -> racer.move(randomNumberGenerator::generateNumber)
-        );
+    public ParticipatedRacers checkEachLap(Supplier<Integer> numberSupplier) {
+        List<Racer> movedRacers = participatedRacers.stream()
+                .map(racer -> racer.move(numberSupplier))
+                .toList();
+        return ParticipatedRacers.from(movedRacers);
     }
 
     public List<Racer> findWinner() {
