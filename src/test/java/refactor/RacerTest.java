@@ -3,6 +3,9 @@ package refactor;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+import refactor.racer.Racer;
+import refactor.racer.RacerName;
+import refactor.racer.RacerPosition;
 
 public class RacerTest {
     @Test

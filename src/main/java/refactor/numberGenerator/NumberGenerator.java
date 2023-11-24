@@ -1,2 +1,5 @@
-package refactor.numberGenerator;public class NumberGenerator {
+package refactor.numberGenerator;
+
+public interface NumberGenerator {
+    int generateNumber();
 }
