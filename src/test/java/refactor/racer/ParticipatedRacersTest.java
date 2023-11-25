@@ -45,6 +45,7 @@ public class ParticipatedRacersTest {
                 .map(Racer::getRacerNameValue)
                 .toList();
 
+        // 이름을 구한 상황과 관련해서 배열로 예상된 결과를 인자로 전달하는 방법도 존재한다
         assertThat(winnerNames).containsExactly(expectedWinnerNames);
     }
 }
